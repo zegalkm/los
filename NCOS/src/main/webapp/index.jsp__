@@ -1,0 +1,105 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="contents/script/jquery/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="contents/script/jquery/jquery.json-2.3.min.js"></script>
+	<script type="text/javascript" src="contents/script/jquery/jquery.websocket-0.0.1.js"></script>
+	<title>WebSocket Sample</title>
+<style type="text/css">
+table tr td {border: 1px solid black; width: 100px; height: 100px;}
+.select_td {background-color: red;}
+</style>	
+</head>
+<script type="text/javascript">
+$(document).ready(function(){
+        // WebSocket통신모듈생성
+	var ws = $.websocket("ws://localhost:8080/NCOS/sample/", {
+                // 메시지 이벤트
+		events: {
+                        // 메시지 수신시..
+/* 			message: function(e) {
+				$("#content").append(e.data + "<br>")
+				var loc = e.location;
+				alert(loc);
+				$("td[id='"+loc+"']").append("입장");
+			} */
+		}
+	});
+    /**    
+	$("#message").change(function(){
+		ws.send("message", this.value+"@"+$("#location").val());
+		this.value = "";
+	});
+    */
+	$("#submit").click(function(){
+		ws.send("message", $("#message").val()+"@"+$("#location").val());
+		//ws.send('say', {name:'foo', text:'baa'});  // sending message is '{type:'say', data:{name:'foo', text:'baa'}}'
+		$("#message").val("");
+		$("#location").val("");
+	});
+    
+    $("span[id^=user]").click(function(){
+    	var gps = $(this).parent().attr("id");
+    	move(gps);
+    });
+});
+var movingCap = 2;
+function move(gps){
+	var result = gps.split("_");
+	//alert("x="+result[0]+"y="+result[1]);
+	var x = parseInt(result[0]);
+	var y = parseInt(result[1]);
+	
+	for(var i=1; i<=movingCap; i++){
+		var x_n = x+i;
+		var y_n = y+i;
+		$("#"+x_n+"_"+y).addClass("select_td");//east
+		$("#"+x+"_"+y_n).addClass("select_td");//south
+		x_n = x-i;
+		y_n = y-i;
+		$("#"+x_n+"_"+y).addClass("select_td");//west
+		$("#"+x+"_"+y_n).addClass("select_td");//north
+	}
+}
+</script>
+
+<body>
+  <section id="content">
+  </section>
+  <input type="text" value="" id="message">
+  <input type="text" value="" id="location" />
+  <input type="button" value="전송" id="submit" />
+  <table style="border: solid 1px red;">
+  	<tr>
+  		<td id="0_0"><span id="user-1">조조</span></td>
+  		<td id="1_0">&nbsp;</td>
+  		<td id="2_0">&nbsp;</td>
+  		<td id="3_0">&nbsp;</td>
+  		<td id="4_0">&nbsp;</td>
+  	</tr>
+  	<tr>
+  		<td id="0_1">&nbsp;</td>
+  		<td id="1_1">&nbsp;</td>
+  		<td id="2_1">&nbsp;</td>
+  		<td id="3_1">&nbsp;</td>
+  		<td id="4_1">&nbsp;</td>
+  	</tr>
+  	<tr>
+  		<td id="0_2">&nbsp;</td>
+  		<td id="1_2">&nbsp;</td>
+  		<td id="2_2">&nbsp;</td>
+  		<td id="3_2">&nbsp;</td>
+  		<td id="4_2">&nbsp;</td>
+  	</tr>
+  	<tr>
+  		<td id="0_3">&nbsp;</td>
+  		<td id="1_3">&nbsp;</td>
+  		<td id="2_3">&nbsp;</td>
+  		<td id="3_3">&nbsp;</td>
+  		<td id="4_3">&nbsp;</td>
+  	</tr>
+  </table>
+</body>
+</html>

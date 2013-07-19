@@ -1,0 +1,296 @@
+
+
+<html>
+<head>
+<meta http-equiv=content-type content="text/html; charset=utf-8">
+<title>지도</title>
+<LINK rel="stylesheet" type="text/css" href="layoutStyle.css">
+<script type="text/javascript">
+<!--
+function refreshing(arg1, arg2) 
+{
+	switch(arg1) {
+		case 0: location.reload(); break;
+		case 1: go(arg2); break;
+		case 3: arg2.submit();
+	}
+}
+function showLayer(obj, city, nation, cityFea, event) 
+{
+	x1 = event.clientX;         
+	x2 = event.clientX;
+    y1 = event.clientY - 5;    
+	y2 = event.clientY + 13;
+	layerObj1 = document.getElementById("city_name");
+    layerObj2 = document.getElementById("nation_name");
+    layerObj1.style.left = x1;
+    layerObj1.style.top = y1 + obj.offsetHeight;
+    layerObj2.style.left = x2;
+    layerObj2.style.top = y2 + obj.offsetHeight;
+
+    cityname = city.substr(6, city.length-1);
+    if(cityname == "교지" || cityname == "남만" || cityname == "남해" || cityname == "영창" || cityname == "산월" || cityname == "계양" || cityname == "영릉") {
+        layerObj1.style.left = x1 - 10;
+        layerObj2.style.left = x2 - 10;
+        layerObj1.style.top = y1 - 50;
+        layerObj2.style.top = y2 - 50;
+    } 
+	else if(cityname == "위례" || cityname == "사비" || cityname == "계림" || cityname == "탐라" || cityname == "왜") 
+	{
+        layerObj1.style.left = x1 - 95;
+        layerObj2.style.left = x2 - 95;
+        layerObj1.style.top = y1 - 55;
+        layerObj2.style.top = y2 - 55;
+    }
+	else if(cityname == "평양" || cityname == "국내" || cityname == "선비")
+	{
+		layerObj1.style.left = x1 - 100;
+        layerObj2.style.left = x2 - 100;
+	}
+//    layerObj.innerHTML = str;
+    document.city_form.city.value = city;
+    document.nation_form.nation.value = nation;
+	document.nation_form.feature_pic.src="http://chjej202.cdn1.cafe24.com/images" + "/feature"+ cityFea +".gif";
+
+    if(nation == " ") 
+	{
+        layerObj2.style.visibility = "hidden";
+    } 
+	else 
+	{
+        layerObj2.style.visibility = "visible";
+    }
+
+    layerObj1.style.visibility = "visible";
+}
+
+function hideLayer() {
+    layerObj1 = document.getElementById("city_name");
+    layerObj2 = document.getElementById("nation_name");
+//    layerObj.innerHTML = " ";
+
+    document.city_form.city.value = " ";
+    document.nation_form.nation.value = " ";
+	document.nation_form.feature_pic.src="http://chjej202.cdn1.cafe24.com/images" + "/feature0.gif";
+
+    layerObj1.style.visibility = "hidden";
+    layerObj2.style.visibility = "hidden";
+}
+
+// -->
+</script>
+<div id=city_name class=balloon style='background-color:CD853F;position:absolute;visibility:hidden;z-index:5;'>
+        <table border=1 cellspacing=0 cellpadding=0 width=104>
+            <form name=city_form><input type="hidden" name="PHPSESSID" value="9cba1f5ad35fe8e5d2d641fd1f0c9d77" />
+                <tr><td style="border-width:0;border-style:none;"><input type=text size=13 style='background-color:CD853F;color:white;border:1;width:104' name=city></td></tr>
+            </form>
+        </table>
+</div>
+<div id=nation_name class=balloon style='background-color:CD853F;position:absolute;visibility:hidden;z-index:5;'>
+        <table border=1 cellspacing=0 cellpadding=0 width=104>
+            <form name=nation_form><input type="hidden" name="PHPSESSID" value="9cba1f5ad35fe8e5d2d641fd1f0c9d77" />
+                <tr><td width=16 style="border-width:0;border-style:none;"><img src='http://chjej202.cdn1.cafe24.com/images/feature0.gif' name=feature_pic width=16 height=16 style='background-color:CD853F;vertical-align:bottom;'></td><td style="border-width:0;border-style:none;width:88;"><input type=text size=13 style='background-color:CD853F;color:white;text-align:right;border:1;width:88;' name=nation></td></tr>
+            </form>
+        </table>
+</div>
+</head>
+<body leftmargin=0 marginwidth=0 topmargin=0 marginheight=0 oncontextmenu='return false' ondragstart='return false' onselectstart='return false' bgcolor=black>
+<div style="position:absolute;top:2;left:1;width:431;height:363;border:1;"> 
+<img src="http://chjej202.cdn1.cafe24.com/images/samtestmapSummar.jpg" width=431 height=363> 
+</div>
+<div name=state301 style='position:absolute;left:415px;top:5px;z-index:3;'>
+<img src="http://chjej202.cdn1.cafe24.com/images/refresh.gif" width=10 height=12 border=0 onclick="refreshing(0,0)">
+</div>
+<div class=showstate name=state301 style='left:14px;top:40px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서북|이】강","군주없는나라",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=301></div>
+
+<div class=layerback name=backlayer301 style='left:0.5px;top:32px;width:54;height:32;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGdeepskyblue.png" style='width:54;height:32;'> </div>
+<div class=reallayer name=layer301 style='left:14px;top:40px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle1.gif" style='width:27;height:16;' onmousemove='showLayer(this,"【서북|이】강","군주없는나라",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=301></div>
+
+<div class=showstate name=state302 style='left:37px;top:65px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서북|중】무위","군주없는나라",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=302></div>
+<div class=layerback name=backlayer302 style='left:20.5px;top:55.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGdeepskyblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer302 style='left:37px;top:65px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【서북|중】무위","군주없는나라",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=302></div>
+<div class=showstate name=state303 style='left:6px;top:82px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서북|중】서평","군주없는나라",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=303></div>
+<div class=layerback name=backlayer303 style='left:-10.5px;top:72.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGdeepskyblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer303 style='left:6px;top:82px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【서북|중】서평","군주없는나라",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=303></div>
+<div class=showstate name=state304 style='left:23px;top:116px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서북|소】천수","군주없는나라",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=304></div>
+<div class=layerback name=backlayer304 style='left:8px;top:107px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGdeepskyblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer304 style='left:23px;top:116px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【서북|소】천수","군주없는나라",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=304></div>
+<div class=showstate name=state305 style='left:58px;top:114px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서북|소】안정","군주없는나라",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=305></div>
+<div class=layerback name=backlayer305 style='left:43px;top:105px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGdeepskyblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer305 style='left:58px;top:114px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【서북|소】안정","군주없는나라",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=305></div>
+<div class=showstate name=state306 style='left:9px;top:142px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서북|이】저"," ",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=306></div>
+<div class=layerback name=backlayer306 style='left:-4.5px;top:134px;width:54;height:32;'></div>
+<div class=reallayer name=layer306 style='left:9px;top:142px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle1.gif" style='width:27;height:16;' onmousemove='showLayer(this,"【서북|이】저"," ",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=306></div>
+<div class=showstate name=state407 style='left:13px;top:162px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서촉|소】무도","군주없는나라",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=407></div>
+<div class=layerback name=backlayer407 style='left:-2px;top:153px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGdeepskyblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer407 style='left:13px;top:162px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【서촉|소】무도","군주없는나라",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=407></div>
+<div class=showstate name=state408 style='left:48px;top:168px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서촉|대】한중","군주없는나라",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=408></div>
+<div class=layerback name=backlayer408 style='left:30px;top:157.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGdeepskyblue.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer408 style='left:48px;top:168px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【서촉|대】한중","군주없는나라",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=408></div>
+<div class=showstate name=state409 style='left:33px;top:200px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서촉|소】자동","군주없는나라",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=409></div>
+<div class=layerback name=backlayer409 style='left:18px;top:191px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGdeepskyblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer409 style='left:33px;top:200px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【서촉|소】자동","군주없는나라",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=409></div>
+<div class=showstate name=state410 style='left:3px;top:227px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서촉|특】성도","안경나라",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=410></div>
+<div class=layerback name=backlayer410 style='left:-19.5px;top:214px;width:90;height:52;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:90;height:52;'> </div>
+<div class=reallayer name=layer410 style='left:3px;top:227px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle5.gif" style='width:45;height:26;' onmousemove='showLayer(this,"【서촉|특】성도","안경나라",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=410></div>
+<div class=showstate name=state411 style='left:57px;top:248px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event41.gif style='width:14;height:14' onmousemove='showLayer(this,"【서촉|중】강주","안경나라",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=411></div>
+<div class=layerback name=backlayer411 style='left:40.5px;top:238.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer411 style='left:57px;top:248px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【서촉|중】강주","안경나라",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=411></div>
+<div class=showstate name=state412 style='left:43px;top:290px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event41.gif style='width:14;height:14' onmousemove='showLayer(this,"【서촉|중】건녕","안경나라",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=412></div>
+<div class=layerback name=backlayer412 style='left:26.5px;top:280.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer412 style='left:43px;top:290px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【서촉|중】건녕","안경나라",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=412></div>
+<div class=showstate name=state413 style='left:7px;top:306px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서촉|소】영창"," ",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=413></div>
+<div class=layerback name=backlayer413 style='left:-8px;top:297px;width:60;height:36;'></div>
+<div class=reallayer name=layer413 style='left:7px;top:306px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【서촉|소】영창"," ",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=413></div>
+<div class=showstate name=state414 style='left:45px;top:330px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서촉|이】남만"," ",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=414></div>
+<div class=layerback name=backlayer414 style='left:31.5px;top:322px;width:54;height:32;'></div>
+<div class=reallayer name=layer414 style='left:45px;top:330px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle1.gif" style='width:27;height:16;' onmousemove='showLayer(this,"【서촉|이】남만"," ",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=414></div>
+<div class=showstate name=state315 style='left:75px;top:135px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서북|특】장안","군주없는나라",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=315></div>
+<div class=layerback name=backlayer315 style='left:52.5px;top:122px;width:90;height:52;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGdeepskyblue.png" style='width:90;height:52;'> </div>
+<div class=reallayer name=layer315 style='left:75px;top:135px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle5.gif" style='width:45;height:26;' onmousemove='showLayer(this,"【서북|특】장안","군주없는나라",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=315></div>
+<div class=showstate name=state416 style='left:88px;top:186px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서촉|중】상용","삼국무쌍",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=416></div>
+<div class=layerback name=backlayer416 style='left:71.5px;top:176.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumaquamarine.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer416 style='left:88px;top:186px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【서촉|중】상용","삼국무쌍",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=416></div>
+<div class=showstate name=state417 style='left:93px;top:258px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서촉|소】영안","안경나라",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=417></div>
+<div class=layerback name=backlayer417 style='left:78px;top:249px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer417 style='left:93px;top:258px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【서촉|소】영안","안경나라",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=417></div>
+<div class=showstate name=state618 style='left:114px;top:338px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【오월|소】교지"," ",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=618></div>
+<div class=layerback name=backlayer618 style='left:99px;top:329px;width:60;height:36;'></div>
+<div class=reallayer name=layer618 style='left:114px;top:338px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【오월|소】교지"," ",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=618></div>
+<div class=showstate name=state619 style='left:178px;top:337px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【오월|중】남해"," ",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=619></div>
+<div class=layerback name=backlayer619 style='left:161.5px;top:327.5px;width:66;height:38;'></div>
+<div class=reallayer name=layer619 style='left:178px;top:337px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【오월|중】남해"," ",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=619></div>
+<div class=showstate name=state320 style='left:108px;top:82px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【서북|이】흉노","파스트페이스",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=320></div>
+<div class=layerback name=backlayer320 style='left:94.5px;top:74px;width:54;height:32;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:54;height:32;'> </div>
+<div class=reallayer name=layer320 style='left:108px;top:82px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle1.gif" style='width:27;height:16;' onmousemove='showLayer(this,"【서북|이】흉노","파스트페이스",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=320></div>
+<div class=showstate name=state221 style='left:128px;top:120px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【중원|특】낙양","파스트페이스",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=221></div>
+<div class=layerback name=backlayer221 style='left:105.5px;top:107px;width:90;height:52;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:90;height:52;'> </div>
+<div class=reallayer name=layer221 style='left:128px;top:120px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle5.gif" style='width:45;height:26;' onmousemove='showLayer(this,"【중원|특】낙양","파스트페이스",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=221></div>
+<div class=showstate name=state522 style='left:118px;top:160px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【초 |대】완","파스트페이스",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=522></div>
+<div class=layerback name=backlayer522 style='left:100px;top:149.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer522 style='left:118px;top:160px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【초 |대】완","파스트페이스",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=522></div>
+<div class=showstate name=state523 style='left:123px;top:205px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【초 |특】양양","삼국무쌍",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=523></div>
+<div class=layerback name=backlayer523 style='left:100.5px;top:192px;width:90;height:52;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumaquamarine.png" style='width:90;height:52;'> </div>
+<div class=reallayer name=layer523 style='left:123px;top:205px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle5.gif" style='width:45;height:26;' onmousemove='showLayer(this,"【초 |특】양양","삼국무쌍",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=523></div>
+<div class=showstate name=state524 style='left:123px;top:278px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【초 |중】무릉","안경나라",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=524></div>
+<div class=layerback name=backlayer524 style='left:106.5px;top:268.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer524 style='left:123px;top:278px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【초 |중】무릉","안경나라",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=524></div>
+<div class=showstate name=state525 style='left:133px;top:245px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【초 |대】강릉","안경나라",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=525></div>
+<div class=layerback name=backlayer525 style='left:115px;top:234.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer525 style='left:133px;top:245px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【초 |대】강릉","안경나라",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=525></div>
+<div class=showstate name=state526 style='left:125px;top:312px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【초 |소】영릉"," ",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=526></div>
+<div class=layerback name=backlayer526 style='left:110px;top:303px;width:60;height:36;'></div>
+<div class=reallayer name=layer526 style='left:125px;top:312px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【초 |소】영릉"," ",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=526></div>
+<div class=showstate name=state527 style='left:170px;top:312px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【초 |중】계양","안경나라",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=527></div>
+<div class=layerback name=backlayer527 style='left:153.5px;top:302.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer527 style='left:170px;top:312px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【초 |중】계양","안경나라",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=527></div>
+<div class=showstate name=state528 style='left:175px;top:277px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【초 |대】장사","안경나라",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=528></div>
+<div class=layerback name=backlayer528 style='left:157px;top:266.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer528 style='left:175px;top:277px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【초 |대】장사","안경나라",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=528></div>
+<div class=showstate name=state529 style='left:185px;top:234px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【초 |소】강하","삼국무쌍",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=529></div>
+<div class=layerback name=backlayer529 style='left:170px;top:225px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumaquamarine.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer529 style='left:185px;top:234px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【초 |소】강하","삼국무쌍",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=529></div>
+<div class=showstate name=state530 style='left:152px;top:183px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【초 |소】신야","삼국무쌍",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=530></div>
+<div class=layerback name=backlayer530 style='left:137px;top:174px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumaquamarine.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer530 style='left:152px;top:183px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【초 |소】신야","삼국무쌍",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=530></div>
+<div class=showstate name=state231 style='left:163px;top:143px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【중원|특】허창","파스트페이스",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=231></div>
+<div class=layerback name=backlayer231 style='left:140.5px;top:130px;width:90;height:52;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:90;height:52;'> </div>
+<div class=reallayer name=layer231 style='left:163px;top:143px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle5.gif" style='width:45;height:26;' onmousemove='showLayer(this,"【중원|특】허창","파스트페이스",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=231></div>
+<div class=showstate name=state232 style='left:178px;top:113px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【중원|중】하내","파스트페이스",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=232></div>
+<div class=layerback name=backlayer232 style='left:161.5px;top:103.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer232 style='left:178px;top:113px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【중원|중】하내","파스트페이스",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=232></div>
+<div class=showstate name=state133 style='left:145px;top:90px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|중】상당","파스트페이스",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=133></div>
+<div class=layerback name=backlayer133 style='left:128.5px;top:80.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer133 style='left:145px;top:90px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【하북|중】상당","파스트페이스",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=133></div>
+<div class=showstate name=state134 style='left:150px;top:55px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|소】진양","파스트페이스",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=134></div>
+<div class=layerback name=backlayer134 style='left:135px;top:46px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer134 style='left:150px;top:55px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【하북|소】진양","파스트페이스",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=134></div>
+<div class=showstate name=state235 style='left:192px;top:190px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【중원|중】여남","파스트페이스",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=235></div>
+<div class=layerback name=backlayer235 style='left:175.5px;top:180.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer235 style='left:192px;top:190px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【중원|중】여남","파스트페이스",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=235></div>
+<div class=showstate name=state636 style='left:242px;top:316px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【오월|이】산월"," ",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=636></div>
+<div class=layerback name=backlayer636 style='left:228.5px;top:308px;width:54;height:32;'></div>
+<div class=reallayer name=layer636 style='left:242px;top:316px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle1.gif" style='width:27;height:16;' onmousemove='showLayer(this,"【오월|이】산월"," ",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=636></div>
+<div class=showstate name=state137 style='left:191px;top:83px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|특】업","파스트페이스",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=137></div>
+<div class=layerback name=backlayer137 style='left:168.5px;top:70px;width:90;height:52;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:90;height:52;'> </div>
+<div class=reallayer name=layer137 style='left:191px;top:83px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle5.gif" style='width:45;height:26;' onmousemove='showLayer(this,"【하북|특】업","파스트페이스",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=137></div>
+<div class=showstate name=state138 style='left:183px;top:28px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|대】계","파스트페이스",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=138></div>
+<div class=layerback name=backlayer138 style='left:165px;top:17.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer138 style='left:183px;top:28px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【하북|대】계","파스트페이스",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=138></div>
+<div class=showstate name=state239 style='left:230px;top:125px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【중원|대】복양","파스트페이스",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=239></div>
+<div class=layerback name=backlayer239 style='left:212px;top:114.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer239 style='left:230px;top:125px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【중원|대】복양","파스트페이스",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=239></div>
+<div class=showstate name=state240 style='left:209px;top:165px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【중원|중】진류","파스트페이스",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=240></div>
+<div class=layerback name=backlayer240 style='left:192.5px;top:155.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer240 style='left:209px;top:165px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【중원|중】진류","파스트페이스",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=240></div>
+<div class=showstate name=state241 style='left:242px;top:155px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【중원|소】소패","건",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=241></div>
+<div class=layerback name=backlayer241 style='left:227px;top:146px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer241 style='left:242px;top:155px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【중원|소】소패","건",8, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=241></div>
+<div class=showstate name=state642 style='left:228px;top:260px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【오월|중】시상","안경나라",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=642></div>
+<div class=layerback name=backlayer642 style='left:211.5px;top:250.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer642 style='left:228px;top:260px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【오월|중】시상","안경나라",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=642></div>
+<div class=showstate name=state643 style='left:236px;top:221px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【오월|소】여강","안경나라",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=643></div>
+<div class=layerback name=backlayer643 style='left:221px;top:212px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer643 style='left:236px;top:221px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【오월|소】여강","안경나라",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=643></div>
+<div class=showstate name=state244 style='left:232px;top:185px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【중원|대】수춘","건",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=244></div>
+<div class=layerback name=backlayer244 style='left:214px;top:174.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer244 style='left:232px;top:185px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【중원|대】수춘","건",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=244></div>
+<div class=showstate name=state145 style='left:222px;top:62px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|대】남피","파스트페이스",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=145></div>
+<div class=layerback name=backlayer145 style='left:204px;top:51.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer145 style='left:222px;top:62px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【하북|대】남피","파스트페이스",2, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=145></div>
+<div class=showstate name=state146 style='left:246px;top:35px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|대】북평","파스트페이스",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=146></div>
+<div class=layerback name=backlayer146 style='left:228px;top:24.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer146 style='left:246px;top:35px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【하북|대】북평","파스트페이스",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=146></div>
+<div class=showstate name=state147 style='left:222px;top:7px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|이】오환","파스트페이스",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=147></div>
+<div class=layerback name=backlayer147 style='left:208.5px;top:-1px;width:54;height:32;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:54;height:32;'> </div>
+<div class=reallayer name=layer147 style='left:222px;top:7px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle1.gif" style='width:27;height:16;' onmousemove='showLayer(this,"【하북|이】오환","파스트페이스",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=147></div>
+<div class=showstate name=state248 style='left:273px;top:160px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【중원|중】하비","건",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=248></div>
+<div class=layerback name=backlayer248 style='left:256.5px;top:150.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer248 style='left:273px;top:160px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【중원|중】하비","건",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=248></div>
+<div class=showstate name=state149 style='left:276px;top:108px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|소】북해","건",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=149></div>
+<div class=layerback name=backlayer149 style='left:261px;top:99px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer149 style='left:276px;top:108px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【하북|소】북해","건",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=149></div>
+<div class=showstate name=state150 style='left:238px;top:98px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|소】평원","파스트페이스",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=150></div>
+<div class=layerback name=backlayer150 style='left:223px;top:89px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer150 style='left:238px;top:98px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【하북|소】평원","파스트페이스",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=150></div>
+<div class=showstate name=state651 style='left:272px;top:197px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【오월|특】건업","건",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=651></div>
+<div class=layerback name=backlayer651 style='left:249.5px;top:184px;width:90;height:52;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:90;height:52;'> </div>
+<div class=reallayer name=layer651 style='left:272px;top:197px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle5.gif" style='width:45;height:26;' onmousemove='showLayer(this,"【오월|특】건업","건",0, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=651></div>
+<div class=showstate name=state652 style='left:293px;top:225px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【오월|중】오","건",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=652></div>
+<div class=layerback name=backlayer652 style='left:276.5px;top:215.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer652 style='left:293px;top:225px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【오월|중】오","건",5, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=652></div>
+<div class=showstate name=state653 style='left:294px;top:253px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【오월|소】회계","건",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=653></div>
+<div class=layerback name=backlayer653 style='left:279px;top:244px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer653 style='left:294px;top:253px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【오월|소】회계","건",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=653></div>
+<div class=showstate name=state654 style='left:262px;top:278px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【오월|소】건안","건",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=654></div>
+<div class=layerback name=backlayer654 style='left:247px;top:269px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer654 style='left:262px;top:278px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【오월|소】건안","건",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=654></div>
+<div class=showstate name=state155 style='left:297px;top:58px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|소】양평","파스트페이스",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=155></div>
+<div class=layerback name=backlayer155 style='left:282px;top:49px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer155 style='left:297px;top:58px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【하북|소】양평","파스트페이스",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=155></div>
+<div class=showstate name=state156 style='left:316px;top:10px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【하북|이】선비","파스트페이스",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=156></div>
+<div class=layerback name=backlayer156 style='left:302.5px;top:2px;width:54;height:32;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:54;height:32;'> </div>
+<div class=reallayer name=layer156 style='left:316px;top:10px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle1.gif" style='width:27;height:16;' onmousemove='showLayer(this,"【하북|이】선비","파스트페이스",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=156></div>
+<div class=showstate name=state757 style='left:351px;top:95px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【동이|대】위례","건",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=757></div>
+<div class=layerback name=backlayer757 style='left:333px;top:84.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer757 style='left:351px;top:95px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【동이|대】위례","건",3, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=757></div>
+<div class=showstate name=state758 style='left:339px;top:69px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【동이|대】평양","건",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=758></div>
+<div class=layerback name=backlayer758 style='left:321px;top:58.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer758 style='left:339px;top:69px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【동이|대】평양","건",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=758></div>
+<div class=showstate name=state759 style='left:330px;top:43px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【동이|대】국내","파스트페이스",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=759></div>
+<div class=layerback name=backlayer759 style='left:312px;top:32.5px;width:72;height:42;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGcrimson.png" style='width:72;height:42;'> </div>
+<div class=reallayer name=layer759 style='left:330px;top:43px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle4.gif" style='width:36;height:21;' onmousemove='showLayer(this,"【동이|대】국내","파스트페이스",6, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=759></div>
+<div class=showstate name=state760 style='left:348px;top:121px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【동이|중】사비","건",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=760></div>
+<div class=layerback name=backlayer760 style='left:331.5px;top:111.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer760 style='left:348px;top:121px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【동이|중】사비","건",1, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=760></div>
+<div class=showstate name=state761 style='left:381px;top:116px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【동이|중】계림","건",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=761></div>
+<div class=layerback name=backlayer761 style='left:364.5px;top:106.5px;width:66;height:38;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:66;height:38;'> </div>
+<div class=reallayer name=layer761 style='left:381px;top:116px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle3.gif" style='width:33;height:19;' onmousemove='showLayer(this,"【동이|중】계림","건",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=761></div>
+<div class=showstate name=state762 style='left:357px;top:155px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【동이|소】탐라","건",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=762></div>
+<div class=layerback name=backlayer762 style='left:342px;top:146px;width:60;height:36;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:60;height:36;'> </div>
+<div class=reallayer name=layer762 style='left:357px;top:155px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle2.gif" style='width:30;height:18;' onmousemove='showLayer(this,"【동이|소】탐라","건",4, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=762></div>
+<div class=showstate name=state763 style='left:400px;top:155px;'><img src=http://chjej202.cdn1.cafe24.com/images/events/event0.gif style='width:14;height:14' onmousemove='showLayer(this,"【동이|이】왜","건",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=763></div>
+<div class=layerback name=backlayer763 style='left:386.5px;top:147px;width:54;height:32;'> <img src="http://chjej202.cdn1.cafe24.com/images/BGmediumblue.png" style='width:54;height:32;'> </div>
+<div class=reallayer name=layer763 style='left:400px;top:155px;'><img src="http://chjej202.cdn1.cafe24.com/images/castle1.gif" style='width:27;height:16;' onmousemove='showLayer(this,"【동이|이】왜","건",7, event)' onmouseout='hideLayer()'><input type=hidden name=citylist value=763></div>
+</body>
+</html>

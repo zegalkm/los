@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+.player{
+	position:absolute;
+	width:64px;
+	height:64px;
+}
+
+#map {
+	position:relative;
+	border:1px solid black;
+	height:1280px;
+	width:1280px;
+}
+
+.field_table {
+	padding:0; 
+	border-spacing:0px; 
+	border:0; 
+	border-collapse:collapse;
+}
+.field_table th,td{
+	padding:0px;
+}
+
+.select_td{
+	background-color: aqua;
+}
