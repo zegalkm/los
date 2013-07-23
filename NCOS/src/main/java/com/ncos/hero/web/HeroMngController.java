@@ -42,7 +42,6 @@ public class HeroMngController {
 	
 	@RequestMapping("/saveHero")
 	public ModelAndView saveHero(ModelAndView mv , Hero hero, final HttpServletRequest request) throws Exception{
-		logger.info("HERO name : "+hero.getHeroid());
 		String uploadPath = heroFilePath;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
@@ -50,11 +49,12 @@ public class HeroMngController {
 		uploadPath += "/" + date[0] + "/" + date[1] + "/" + date[2];
 		
 		FileUtils fu = new FileUtils();
-    	List<Map<String, String>> fileInfoList = fu.uploadHero(request, uploadPath);
+    	List<Map<String, String>> fileInfoList = fu.uploadHero(request, uploadPath);//파일업로드 처리
 
     	if(fileInfoList!=null&&fileInfoList.size()==3){
 	    	hero.setFilePath(fileInfoList.get(0).get("newFileName"));// /2013/07/18/20134322324 <-- 확장자없이 timestamp만 가지고 옴.
-	    	heroMngService.saveHero(hero);
+	    	String rgb = request.getParameter("p_rgb");
+	    	heroMngService.saveHero(hero,rgb);
     	}else{
     		
     	}

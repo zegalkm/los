@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -84,7 +86,7 @@ public class FileUtils {
 			if (!"".equals(file.getOriginalFilename())) {
 				try {
 					
-					filePath = uploadPath + "/" + newFileName + "_" + file.getOriginalFilename();
+					filePath = uploadPath + "/" + newFileName + "_" + StringUtils.lowerCase(file.getOriginalFilename());
 					file.transferTo(new File(filePath));
 					
 					Map<String, String> fileInfo = new HashMap<String, String>();
