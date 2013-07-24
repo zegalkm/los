@@ -25,5 +25,6 @@ public class HibTest {
 		hero.setForce(23);
 //		hero.setHeroid("zegalkm");
 		heroMngDao.saveHero(hero);
+		//gg
 	}
 }
