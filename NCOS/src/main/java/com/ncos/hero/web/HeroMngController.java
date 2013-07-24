@@ -52,7 +52,7 @@ public class HeroMngController {
     	List<Map<String, String>> fileInfoList = fu.uploadHero(request, uploadPath);//파일업로드 처리
 
     	if(fileInfoList!=null&&fileInfoList.size()==3){
-	    	hero.setFilePath(fileInfoList.get(0).get("newFileName"));// /2013/07/18/20134322324 <-- 확장자없이 timestamp만 가지고 옴.
+	    	hero.setFilePath(fileInfoList.get(0).get("filePath")+fileInfoList.get(0).get("newFileName"));// /2013/07/18/20134322324 <-- 확장자없이 timestamp만 가지고 옴.
 	    	String rgb = request.getParameter("p_rgb");
 	    	heroMngService.saveHero(hero,rgb);
     	}else{

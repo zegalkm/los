@@ -8,19 +8,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 
 public class ImageCropGenerator {
-
-//	public static void main(String[] args){
-//		ImageCropGenerator icrop = new ImageCropGenerator();
-//		icrop.cropImages("/Users/Taengoo/Desktop/atk.bmp");
-//	}
+	private static final Logger logger = Logger.getLogger(ImageCropGenerator.class);
 	
 	public void cropImages(String originalPath, String originalFileName, int cropCount, int imgSize, int[] rgb){
 		File f = new File(originalPath+originalFileName);
 		BufferedImage src = null;
-		String[] fileNameArray = originalFileName.split(".");
+		String[] fileNameArray = originalFileName.split("\\.");
 		try {
 			src = ImageIO.read(f);
 		} catch (IOException e) {
@@ -48,6 +44,7 @@ public class ImageCropGenerator {
 				e.printStackTrace();
 			}  
 		}
+		new File(originalPath+originalFileName).delete();//원본 마스터 이미지 삭제.
 	}
 	
 	

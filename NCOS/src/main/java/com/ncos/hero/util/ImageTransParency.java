@@ -95,7 +95,7 @@ public class ImageTransParency
 //        	 System.out.println("markerRGB : "+markerRGB);
             if ((rgb | 0xFF000000) == markerRGB)
             {
-            	System.out.println("1111");
+//            	System.out.println("1111");
                // Mark the alpha bits as zero - transparent
                return 0x00FFFFFF & rgb;
             }

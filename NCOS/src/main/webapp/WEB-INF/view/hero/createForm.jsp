@@ -14,6 +14,9 @@
 			$('#heroForm').submit();
 		}
 	</script>
+	<style type="text/css">
+	.op1{background-color: red;}
+	</style>
 </head>
 <body>
 	<form name="heroForm" id="heroForm" action='<c:url value="/hero/saveHero"/>' method="post" enctype="multipart/form-data">
@@ -24,7 +27,13 @@
 			</tr>
 			<tr>
 				<td>타입</td>
-				<td><input type="text" name="type" /></td>
+				<td>
+					<select name="type">
+						<option value="A" >장군</option>
+						<option value="B" >호걸</option>
+						<option value="C" >책사</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>가격</td>
@@ -52,19 +61,28 @@
 			</tr>
 			<tr>
 				<td>조형 - ATK</td>
-				<td><input type="text" name="char_file1" /></td>
+				<td><input type="file" name="char_file1" /></td>
 			</tr>
 			<tr>
 				<td>조형 - MOV</td>
-				<td><input type="text" name="char_file2" /></td>
+				<td><input type="file" name="char_file2" /></td>
 			</tr>
 			<tr>
 				<td>조형 - SPC</td>
-				<td><input type="text" name="char_file3" /></td>
+				<td><input type="file" name="char_file3" /></td>
 			</tr>
 			<tr>
 				<td>배경선택</td>
-				<td><input type="text" name="char_file3" /></td>
+				<td>
+					<table>
+						<tr>
+							<td width="50px" height="50px" style="background-color: #F700FF">247,0,255</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="p_rgb" value="247,0,255" /></td>
+						</tr>
+					</table>
+				</td>
 			</tr>
 		</table>
 		<input type="button" value="등록" onclick="javascript:save();"/>

@@ -91,7 +91,7 @@ public class FileUtils {
 					
 					Map<String, String> fileInfo = new HashMap<String, String>();
 					fileInfo.put("key", entry.getKey());
-					fileInfo.put("filePath", filePath);
+					fileInfo.put("filePath", uploadPath+"/");
 					fileInfo.put("newFileName", newFileName);
 					fileInfo.put("originalFilename", file.getOriginalFilename());
 					fileInfo.put("fileSize", String.valueOf(file.getSize()));
