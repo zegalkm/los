@@ -14,11 +14,11 @@ import com.ncos.hero.entity.Hero;
 public class HibHeroMngDao implements HeroMngDao{
 
 	@Autowired
-	private SessionFactory sessioFactory;
+	private SessionFactory sessionFactory;
 
 	@Transactional
 	public void saveHero(Hero hero) {
-		Session session = sessioFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		session.save(hero);
 		session.flush();
 //		session.close();

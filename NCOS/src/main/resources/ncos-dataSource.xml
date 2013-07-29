@@ -19,6 +19,8 @@
 			<list>
 				<value>com.ncos.hero.entity.Hero</value>
 				<value>com.ncos.user.entity.User</value>
+				<value>com.ncos.map.entity.MapInfo</value>
+				<value>com.ncos.map.entity.MapField</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

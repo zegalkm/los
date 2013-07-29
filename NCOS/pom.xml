@@ -52,6 +52,23 @@
 				     </connectors>			        
 			    </configuration>
 			</plugin>
+			<plugin>
+			    <groupId>com.mysema.maven</groupId>
+			    <artifactId>apt-maven-plugin</artifactId>
+			    <version>1.1.1</version>
+			    <executions>
+			        <execution>
+			            <goals>
+			                <goal>process</goal>
+			            </goals>
+			            <configuration>
+			                <outputDirectory>target/generated-sources/java</outputDirectory>
+<!-- 			                <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor> -->
+			                <processor>com.mysema.query.apt.hibernate.HibernateAnnotationProcessor</processor>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>		
   	</plugins>
   </build>
 <!-- 
@@ -210,7 +227,22 @@
 	  <artifactId>javassist</artifactId>
 	  <version>3.15.0-GA</version>
 	</dependency>
-	
+<!-- QueryDSL -->	
+	<dependency>
+		<groupId>com.mysema.querydsl</groupId>
+		<artifactId>querydsl-core</artifactId>
+		<version>3.2.1</version>
+	</dependency>	
+	<dependency>
+		<groupId>com.mysema.querydsl</groupId>
+		<artifactId>querydsl-apt</artifactId>
+		<version>3.2.1</version>
+	</dependency>	
+	<dependency>
+		<groupId>com.mysema.querydsl</groupId>
+		<artifactId>querydsl-jpa</artifactId>
+		<version>3.2.1</version>
+	</dependency>	
 <!-- Mysql driver -->
 	<dependency>
 		<groupId>mysql</groupId>
@@ -251,6 +283,11 @@
 		<artifactId>slf4j-simple</artifactId>
 		<version>1.6.1</version>
 	</dependency>
+	<dependency> 
+	  <groupId>org.slf4j</groupId> 
+	  <artifactId>slf4j-log4j12</artifactId> 
+	  <version>1.6.1</version> 
+	</dependency> 	
 	<dependency>
 	  <groupId>org.apache.httpcomponents</groupId>
 	  <artifactId>httpmime</artifactId>
