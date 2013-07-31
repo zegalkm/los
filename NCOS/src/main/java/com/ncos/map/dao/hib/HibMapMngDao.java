@@ -21,12 +21,16 @@ public class HibMapMngDao implements MapMngDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	public Session getSession(){
+		return sessionFactory.getCurrentSession();
+	}
+	
 	@Transactional
-	public void saveMapInfo(MapInfo mapInfo){
+	public Integer saveMapInfo(MapInfo mapInfo){
 		Session session = sessionFactory.getCurrentSession();
 		session.save(mapInfo);
-		System.out.println(" ++++ mapid : "+mapInfo.getMapid()+" ++++++++++++++++++++++");
 		session.flush();
+		return mapInfo.getMapid();
 	}
 	
 	@Transactional
@@ -43,7 +47,6 @@ public class HibMapMngDao implements MapMngDao{
 		session.flush();
 	}
 	
-	@Transactional
 	public List<MapInfo> getMapInfoList(){
 		Session session = sessionFactory.getCurrentSession();
 		QMapInfo mapInfo = QMapInfo.mapInfo;
@@ -51,4 +54,13 @@ public class HibMapMngDao implements MapMngDao{
 		List<MapInfo> list = query.from(mapInfo).list(mapInfo);
 		return list;
 	}
+	
+	@Transactional
+	public MapInfo getMapInfo(Integer mapid){
+		QMapInfo mapInfo = QMapInfo.mapInfo;
+		JPQLQuery query = new HibernateQuery(getSession());
+		MapInfo info = query.from(mapInfo).where(mapInfo.mapid.eq(mapid)).uniqueResult(mapInfo);
+		return info;
+	}
+	
 }

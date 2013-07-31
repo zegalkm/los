@@ -7,8 +7,9 @@ import com.ncos.map.entity.MapInfo;
 
 public interface MapMngDao {
 
-	public void saveMapInfo(MapInfo mapInfo);
+	public Integer saveMapInfo(MapInfo mapInfo);
 	public void saveMapField(MapField mapField);
 	public void deleteMapInfo(MapInfo mapInfo);
 	public List<MapInfo> getMapInfoList();
+	public MapInfo getMapInfo(Integer mapid);
 }

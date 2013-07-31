@@ -35,12 +35,12 @@ public class HibTest {
 		heroMngDao.saveHero(hero);
 		//gg girls generation
 	}
-//	@Test
+	@Test
 	public void testSaveMapInfo(){
 		MapInfo mapInfo = new MapInfo();
 		mapInfo.setWidth(1920);
 		mapInfo.setHeight(1920);
-		mapInfo.setMapName("허창");
+		mapInfo.setMapName("건업");
 		mapMngDao.saveMapInfo(mapInfo);
 	}
 //	@Test
@@ -61,11 +61,16 @@ public class HibTest {
 		mapMngDao.deleteMapInfo(info);
 	}
 	
-	@Test
+//	@Test
 	public void getMapList(){
 		List<MapInfo> mapInfo = mapMngDao.getMapInfoList();
 		for(MapInfo map : mapInfo){
 			System.out.println("*** name : "+map.getMapName());
 		}
+	}
+//	@Test
+	public void getMapInfo(){
+		MapInfo mapInfo = mapMngDao.getMapInfo(3);
+		System.out.println("file path : "+mapInfo.getFilePath());
 	}
 }

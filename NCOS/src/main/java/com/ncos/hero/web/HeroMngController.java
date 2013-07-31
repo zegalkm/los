@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ncos.hero.entity.Hero;
 import com.ncos.hero.service.HeroMngService;
 import com.ncos.utils.FileUtils;
+import com.ncos.utils.TotalUtils;
 
 @Controller
 @RequestMapping("/hero")
@@ -43,10 +44,7 @@ public class HeroMngController {
 	@RequestMapping("/saveHero")
 	public ModelAndView saveHero(ModelAndView mv , Hero hero, final HttpServletRequest request) throws Exception{
 		String uploadPath = heroFilePath;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Calendar cal = Calendar.getInstance();
-		String[] date = sdf.format(cal.getTime()).split("-");
-		uploadPath += "/" + date[0] + "/" + date[1] + "/" + date[2];
+		uploadPath += TotalUtils.getUploadPathByDate();
 		
 		FileUtils fu = new FileUtils();
     	List<Map<String, String>> fileInfoList = fu.uploadHero(request, uploadPath);//파일업로드 처리
