@@ -3,6 +3,7 @@ package com.ncos.hero.service.impl;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.ncos.hero.dao.HeroMngDao;
@@ -16,6 +17,8 @@ public class HeroMngServiceImpl implements HeroMngService{
 
 	@Resource(name="heroMngDao")
 	HeroMngDao heroMngDao;
+	@Value("#{ncos_prop['commonFilePath']}")
+	public String commonFilePath;
 	
 	
 	public void saveHero(Hero hero, String rgb) {
@@ -31,12 +34,11 @@ public class HeroMngServiceImpl implements HeroMngService{
 		logger.info("===========================================================================");
 		
 		//이미지 transparency & cropping 처리
-		String filePath = hero.getFilePath();
 		String[] rgbSplit = rgb.split(",");
 		int[] rgbVal = {Integer.parseInt(rgbSplit[0]),Integer.parseInt(rgbSplit[1]),Integer.parseInt(rgbSplit[2])};
 		ImageCropGenerator imgCropGen = new ImageCropGenerator();
-		imgCropGen.cropImages(originalPath, fileName+"_atk.bmp", 12, 64, rgbVal);//atk
-		imgCropGen.cropImages(originalPath, fileName+"_mov.bmp", 11, 48, rgbVal);//mov
-		imgCropGen.cropImages(originalPath, fileName+"_spc.bmp", 5, 48, rgbVal);//spc
+		imgCropGen.cropImages(commonFilePath+originalPath, fileName+"_atk.bmp", 12, 64, rgbVal);//atk
+		imgCropGen.cropImages(commonFilePath+originalPath, fileName+"_mov.bmp", 11, 48, rgbVal);//mov
+		imgCropGen.cropImages(commonFilePath+originalPath, fileName+"_spc.bmp", 5, 48, rgbVal);//spc
 	}
 }

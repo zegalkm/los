@@ -27,6 +27,8 @@ public class HeroMngController {
 	@Resource(name="heroMngService")
 	HeroMngService heroMngService;
 	
+	@Value("#{ncos_prop['commonFilePath']}")
+	public String commonFilePath;
 	@Value("#{ncos_prop['heroFilePath']}")
 	public String heroFilePath;
 	
@@ -43,14 +45,15 @@ public class HeroMngController {
 	
 	@RequestMapping("/saveHero")
 	public ModelAndView saveHero(ModelAndView mv , Hero hero, final HttpServletRequest request) throws Exception{
-		String uploadPath = heroFilePath;
-		uploadPath += TotalUtils.getUploadPathByDate();
+		String uploadPath = commonFilePath+heroFilePath;
+		String datePath = TotalUtils.getUploadPathByDate();
+		uploadPath += datePath;
 		
 		FileUtils fu = new FileUtils();
     	List<Map<String, String>> fileInfoList = fu.uploadHero(request, uploadPath);//파일업로드 처리
 
     	if(fileInfoList!=null&&fileInfoList.size()==3){
-	    	hero.setFilePath(fileInfoList.get(0).get("filePath")+fileInfoList.get(0).get("newFileName"));// /2013/07/18/20134322324 <-- 확장자없이 timestamp만 가지고 옴.
+	    	hero.setFilePath(heroFilePath+datePath+fileInfoList.get(0).get("newFileName"));// /2013/07/18/20134322324 <-- 확장자없이 timestamp만 가지고 옴.
 	    	String rgb = request.getParameter("p_rgb");
 	    	heroMngService.saveHero(hero,rgb);
     	}else{

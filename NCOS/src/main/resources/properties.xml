@@ -6,8 +6,9 @@
 <entry key="url">jdbc:postgresql://localhost:5432/los</entry>
 <entry key="username">jessica</entry>
 <entry key="password">1234</entry>
-<entry key="heroFilePath">E:/los_file/hero</entry>
-<entry key="mapFilePath">E:/los_file/map</entry>
+<entry key="commonFilePath">E:/los_file/</entry>
+<entry key="heroFilePath">hero</entry>
+<entry key="mapFilePath">map</entry>
 <!-- <entry key="driver">com.mysql.jdbc.Driver</entry> -->
 <!-- <entry key="url">jdbc:mysql://localhost:3306/newcs</entry> -->
 <!-- <entry key="username">root</entry> -->

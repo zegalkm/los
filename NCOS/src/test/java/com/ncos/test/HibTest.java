@@ -1,6 +1,8 @@
 package com.ncos.test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +37,7 @@ public class HibTest {
 		heroMngDao.saveHero(hero);
 		//gg girls generation
 	}
-	@Test
+//	@Test
 	public void testSaveMapInfo(){
 		MapInfo mapInfo = new MapInfo();
 		mapInfo.setWidth(1920);
@@ -61,9 +63,11 @@ public class HibTest {
 		mapMngDao.deleteMapInfo(info);
 	}
 	
-//	@Test
+	@Test
 	public void getMapList(){
-		List<MapInfo> mapInfo = mapMngDao.getMapInfoList();
+		Map<String,Object> param = new HashMap<String,Object>();
+//		param.put("p_mapName","하");
+		List<MapInfo> mapInfo = mapMngDao.getMapInfoList(param);
 		for(MapInfo map : mapInfo){
 			System.out.println("*** name : "+map.getMapName());
 		}

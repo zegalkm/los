@@ -6,8 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<script type="text/javascript" src="<c:url value='/contents/script/jquery/jquery-1.10.2.min.js'/>"></script>
+	<link rel="stylesheet" href="<c:url value='/contents/css/table.css'/>">
 	<script>
 		$().ready(function(){
+			$(".default_table td").mouseover(function(){
+				$(this).addClass("td_bgcolor");
+			}).mouseout(function(){
+				$(this).removeClass("td_bgcolor");
+			});
 		});
 	
 		function save(){
@@ -25,10 +31,16 @@
 				<td>이미지 : ${mapInfo.filePath}</td>
 			</tr>
 		</table>
-		<table style="width: ${mapInfo.width}px; height:${mapInfo.height}px;">
-			<tr>
-				<td><img src="<c:url value='/static/map/abc.bmp' />"/></td>
-			</tr>
+		<c:set var="colCount" value="${mapInfo.width/48}"/>
+		<c:set var="rowCount" value="${mapInfo.height/48}"/>
+		<table class="default_table" border="1" style="width: ${mapInfo.width}px; height:${mapInfo.height}px; background:url(<c:url value='/static/${mapInfo.filePath}.bmp' />);" >
+			<c:forEach begin="1" end="${rowCount}">
+				<tr>
+					<c:forEach begin="1" end="${colCount}">
+						<td style="width: 48px; height: 48px;"></td>
+					</c:forEach>
+				</tr>
+			</c:forEach>
 		</table>
 	</form>	
 </body>

@@ -1,7 +1,9 @@
 package com.ncos.map.dao.hib;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mysema.query.BooleanBuilder;
 import com.mysema.query.jpa.JPQLQuery;
 import com.mysema.query.jpa.hibernate.HibernateQuery;
 import com.ncos.map.dao.MapMngDao;
@@ -46,13 +49,29 @@ public class HibMapMngDao implements MapMngDao{
 		session.delete(mapInfo);
 		session.flush();
 	}
-	
-	public List<MapInfo> getMapInfoList(){
-		Session session = sessionFactory.getCurrentSession();
+	@Transactional
+	public List<MapInfo> getMapInfoList(Map<String,Object> param){
 		QMapInfo mapInfo = QMapInfo.mapInfo;
-		JPQLQuery query = new HibernateQuery (session);
-		List<MapInfo> list = query.from(mapInfo).list(mapInfo);
+		JPQLQuery query = new HibernateQuery (getSession());
+		//Dynamic condition
+		BooleanBuilder builder = new BooleanBuilder();
+		if(StringUtils.isNotEmpty((String) param.get("p_mapName")))
+			builder.and(mapInfo.mapName.like("%"+(String) param.get("p_mapName")+"%"));
+		List<MapInfo> list = query.from(mapInfo).where(builder)
+								   .offset((Integer) param.get("p_offset")).limit((Integer) param.get("p_limit"))
+								   .orderBy(mapInfo.mapid.desc()).list(mapInfo);
 		return list;
+	}
+	@Transactional
+	public int getMapInfoListCount(Map<String,Object> param){
+		QMapInfo mapInfo = QMapInfo.mapInfo;
+		JPQLQuery query = new HibernateQuery (getSession());
+		//Dynamic condition
+		BooleanBuilder builder = new BooleanBuilder();
+		if(StringUtils.isNotEmpty((String) param.get("p_mapName")))
+			builder.and(mapInfo.mapName.like("%"+(String) param.get("p_mapName")+"%"));
+		int count = (int) query.from(mapInfo).where(builder).count();
+		return count;
 	}
 	
 	@Transactional

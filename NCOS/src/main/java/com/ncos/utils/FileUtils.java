@@ -40,7 +40,8 @@ public class FileUtils {
     		file = entry.getValue();
     		if (!"".equals(file.getOriginalFilename())) {
     			try {
-    				newFileName = getNewFileName(file.getOriginalFilename());
+    				String[] newFileNameAry = getNewFileName(file.getOriginalFilename());
+    				newFileName = newFileNameAry[2];
     				
         			filePath = uploadPath + "/" + newFileName;
         			file.transferTo(new File(filePath));
@@ -48,7 +49,7 @@ public class FileUtils {
         			Map<String, String> fileInfo = new HashMap<String, String>();
         			fileInfo.put("key", entry.getKey());
         			fileInfo.put("filePath", filePath);
-        			fileInfo.put("newFileName", newFileName);
+        			fileInfo.put("newFileName", newFileNameAry[0]);
         			fileInfo.put("originalFilename", file.getOriginalFilename());
         			fileInfo.put("fileSize", String.valueOf(file.getSize()));
         			fileInfoList.add(fileInfo);
@@ -104,7 +105,7 @@ public class FileUtils {
 		return fileInfoList;
 	}
 	
-	public String getNewFileName(String fileName) {
+	public String[] getNewFileName(String fileName) {
 		final long systemTime = System.currentTimeMillis();
 		String newFileName = String.valueOf(systemTime);
 
@@ -112,7 +113,8 @@ public class FileUtils {
 		int index = fileName.lastIndexOf(".");
 		String fileExt = fileName.substring(index + 1);
 
-		return newFileName + "." + fileExt;
+		String[] newFileNameAry = {newFileName,fileExt,newFileName+"."+fileExt};
+		return newFileNameAry;
 	}
 	public String getNewFileName2() {
 		final long systemTime = System.currentTimeMillis();
