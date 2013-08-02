@@ -16,6 +16,10 @@ public class HibHeroMngDao implements HeroMngDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	public Session getSession(){
+		return sessionFactory.getCurrentSession();
+	}
+	
 	@Transactional
 	public void saveHero(Hero hero) {
 		Session session = sessionFactory.getCurrentSession();

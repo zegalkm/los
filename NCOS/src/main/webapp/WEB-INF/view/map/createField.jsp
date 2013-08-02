@@ -33,7 +33,7 @@
 		</table>
 		<c:set var="colCount" value="${mapInfo.width/48}"/>
 		<c:set var="rowCount" value="${mapInfo.height/48}"/>
-		<table class="default_table" border="1" style="width: ${mapInfo.width}px; height:${mapInfo.height}px; background:url(<c:url value='/static/${mapInfo.filePath}.bmp' />);" >
+		<table class="default_table" border="0" style="width: ${mapInfo.width}px; height:${mapInfo.height}px; background:url(<c:url value='/static/${mapInfo.filePath}.bmp' />);" >
 			<c:forEach begin="1" end="${rowCount}">
 				<tr>
 					<c:forEach begin="1" end="${colCount}">

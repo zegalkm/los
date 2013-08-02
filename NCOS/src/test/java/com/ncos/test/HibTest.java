@@ -4,12 +4,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.mysema.query.jpa.JPQLQuery;
+import com.mysema.query.jpa.hibernate.HibernateQuery;
+import com.ncos.common.dao.CodeDao;
+import com.ncos.common.entity.Code;
+import com.ncos.common.entity.QCode;
 import com.ncos.hero.dao.HeroMngDao;
 import com.ncos.hero.entity.Hero;
 import com.ncos.map.dao.MapMngDao;
@@ -25,6 +33,15 @@ public class HibTest {
 	
 	@Autowired
 	MapMngDao mapMngDao;
+	@Autowired
+	CodeDao codeDao;
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	public Session getSession(){
+		return sessionFactory.getCurrentSession();
+	}
 	
 //	@Test
 	public void testHero(){
@@ -63,7 +80,7 @@ public class HibTest {
 		mapMngDao.deleteMapInfo(info);
 	}
 	
-	@Test
+//	@Test
 	public void getMapList(){
 		Map<String,Object> param = new HashMap<String,Object>();
 //		param.put("p_mapName","하");
@@ -76,5 +93,18 @@ public class HibTest {
 	public void getMapInfo(){
 		MapInfo mapInfo = mapMngDao.getMapInfo(3);
 		System.out.println("file path : "+mapInfo.getFilePath());
+	}
+	@Test
+	@Transactional
+	public void getCodeList(){
+//		Map<String,Object> param = new HashMap<String, Object>();
+//		param.put("p_keyword","kk");
+//		param.put("p_offset",0);
+//		param.put("p_limit",10);
+//		List<Code> list = codeDao.getCodeList(param);
+		QCode code = QCode.code;
+		JPQLQuery query = new HibernateQuery (getSession());
+		List<Code> list = query.from(code).list(code);
+		System.out.println("********** size : "+list.size());
 	}
 }

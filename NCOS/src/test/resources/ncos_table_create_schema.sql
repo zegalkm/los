@@ -59,3 +59,19 @@ WITH (
 );
 ALTER TABLE sa_map_field
   OWNER TO jessica;
+  
+--코드  
+CREATE TABLE sa_code
+(
+  master_code character varying(20) NOT NULL,
+  detail_code character varying(20) NOT NULL,
+  code_name character varying(50),
+  sort_num integer,
+  code_desc character varying(100),
+  CONSTRAINT sa_code_pkey PRIMARY KEY (master_code , detail_code )
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE sa_code
+  OWNER TO jessica;
