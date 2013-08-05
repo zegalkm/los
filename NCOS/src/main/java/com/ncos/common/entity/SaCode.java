@@ -8,9 +8,8 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="sa_code")
-@IdClass(CodePK.class)
-public class Code{
+@Table(name="kk_sajo")
+public class SaCode{
 
 //	@EmbeddedId
 //	private CodePK codeId;
@@ -22,38 +21,6 @@ public class Code{
 	@Column(name="detail_code")
 	private String detailCode;
 	
-	@Column(name="code_name")
-	private String codeName;
-	
-	@Column(name="sort_num")
-	private Integer sortNum;
-	
-	@Column(name="code_desc")
-	private String codeDesc;
-
-	public String getCodeName() {
-		return codeName;
-	}
-
-	public void setCodeName(String codeName) {
-		this.codeName = codeName;
-	}
-
-	public Integer getSortNum() {
-		return sortNum;
-	}
-
-	public void setSortNum(Integer sortNum) {
-		this.sortNum = sortNum;
-	}
-
-	public String getCodeDesc() {
-		return codeDesc;
-	}
-
-	public void setCodeDesc(String codeDesc) {
-		this.codeDesc = codeDesc;
-	}
 
 	public String getMasterCode() {
 		return masterCode;

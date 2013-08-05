@@ -5,12 +5,12 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-//@Embeddable
+@Embeddable
 public class CodePK implements Serializable{
 
-//	@Column(name="master_code")
+	@Column(name="master_code")
 	public String masterCode;
-//	@Column(name="detail_code")
+	@Column(name="detail_code")
 	public String detailCode;
 	
 	public String getMasterCode() {

@@ -18,6 +18,7 @@ import com.mysema.query.jpa.hibernate.HibernateQuery;
 import com.ncos.common.dao.CodeDao;
 import com.ncos.common.entity.Code;
 import com.ncos.common.entity.QCode;
+import com.ncos.common.entity.QSaCode;
 import com.ncos.hero.dao.HeroMngDao;
 import com.ncos.hero.entity.Hero;
 import com.ncos.map.dao.MapMngDao;
@@ -102,9 +103,9 @@ public class HibTest {
 //		param.put("p_offset",0);
 //		param.put("p_limit",10);
 //		List<Code> list = codeDao.getCodeList(param);
-		QCode code = QCode.code;
+		QSaCode code = QSaCode.saCode;
 		JPQLQuery query = new HibernateQuery (getSession());
-		List<Code> list = query.from(code).list(code);
-		System.out.println("********** size : "+list.size());
+		int count = (int) query.from(code).count();
+		System.out.println("********** size : "+count);
 	}
 }
