@@ -1,5 +1,7 @@
 package com.ncos.common.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -9,18 +11,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="sa_code")
-@IdClass(CodePK.class)
-public class Code{
+public class Code implements Serializable{
 
-//	@EmbeddedId
-//	private CodePK codeId;
-	@Id
-	@Column(name="master_code")
-	private String masterCode;
-
-//	@Id
-	@Column(name="detail_code")
-	private String detailCode;
+	@EmbeddedId
+	private CodePK codeId;
 	
 	@Column(name="code_name")
 	private String codeName;
@@ -55,20 +49,19 @@ public class Code{
 		this.codeDesc = codeDesc;
 	}
 
-	public String getMasterCode() {
-		return masterCode;
+//	public CodePK getCodeId() {
+//		return codeId;
+//	}
+//
+//	public void setCodeId(CodePK codeId) {
+//		this.codeId = codeId;
+//	}
+	
+	public String getMasterCode(){
+		return codeId.getMasterCode();
 	}
-
-	public void setMasterCode(String masterCode) {
-		this.masterCode = masterCode;
-	}
-
-	public String getDetailCode() {
-		return detailCode;
-	}
-
-	public void setDetailCode(String detailCode) {
-		this.detailCode = detailCode;
+	public String getDetailCode(){
+		return codeId.getDetailCode();
 	}
 	
 	

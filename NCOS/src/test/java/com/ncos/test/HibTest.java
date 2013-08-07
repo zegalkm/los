@@ -13,12 +13,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mysema.query.jpa.JPQLQuery;
-import com.mysema.query.jpa.hibernate.HibernateQuery;
 import com.ncos.common.dao.CodeDao;
 import com.ncos.common.entity.Code;
-import com.ncos.common.entity.QCode;
-import com.ncos.common.entity.QSaCode;
 import com.ncos.hero.dao.HeroMngDao;
 import com.ncos.hero.entity.Hero;
 import com.ncos.map.dao.MapMngDao;
@@ -98,14 +94,20 @@ public class HibTest {
 	@Test
 	@Transactional
 	public void getCodeList(){
-//		Map<String,Object> param = new HashMap<String, Object>();
-//		param.put("p_keyword","kk");
-//		param.put("p_offset",0);
-//		param.put("p_limit",10);
-//		List<Code> list = codeDao.getCodeList(param);
-		QSaCode code = QSaCode.saCode;
-		JPQLQuery query = new HibernateQuery (getSession());
-		int count = (int) query.from(code).count();
-		System.out.println("********** size : "+count);
+		Map<String,Object> param = new HashMap<String, Object>();
+		param.put("p_keyword","");
+		param.put("p_offset",0);
+		param.put("p_limit",10);
+		List<Code> list = codeDao.getCodeList(param);
+//		QCode code = QCode.code;
+//		JPQLQuery query = new HibernateQuery (getSession());
+//		List<Code> list = query.from(code).list(code);
+		for(Code c : list){
+			System.out.println("********** master : "+c.getMasterCode());
+			System.out.println("********** detail : "+c.getDetailCode());
+			System.out.println("********** name : "+c.getCodeName());
+		}
 	}
+	
+	
 }

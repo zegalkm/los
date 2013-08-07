@@ -54,25 +54,25 @@ public class CodeController {
 		return mv;
 	}
 	
-//	@RequestMapping("/createForm")
-//	public ModelAndView createForm(ModelAndView mv) throws Exception{
-//		List<String> masterCodeList = codeService.getMasterCodeList();
-//		mv.addObject("masterCodeList",masterCodeList);
-//		mv.setViewName("common/code/createForm");
-//		return mv;
-//	}
-//	
-//	@RequestMapping("/ajax/detailCodeList")
-//	public @ResponseBody ModelMap detailCodeList(ModelMap map, @RequestParam(value="masterCode") String masterCode) throws Exception{
-//		List<Code> detailCodeItems = codeService.getDetailCodeList(masterCode);
-//		map.addAttribute("detailCodeItems", detailCodeItems);
-//		return map;
-//	}
-//	
-//	@RequestMapping("/saveCode")
-//	public ModelAndView saveCode(ModelAndView mv, Code code, HttpServletRequest request) throws Exception{
-//		codeService.saveCode(code);
-//		mv.setViewName("redirect:list");
-//		return mv;
-//	}
+	@RequestMapping("/createForm")
+	public ModelAndView createForm(ModelAndView mv) throws Exception{
+		List<String> masterCodeList = codeService.getMasterCodeList();
+		mv.addObject("masterCodeList",masterCodeList);
+		mv.setViewName("common/code/createForm");
+		return mv;
+	}
+	
+	@RequestMapping("/ajax/detailCodeList")
+	public @ResponseBody ModelMap detailCodeList(ModelMap map, @RequestParam(value="masterCode") String masterCode) throws Exception{
+		List<Code> detailCodeItems = codeService.getDetailCodeList(masterCode);
+		map.addAttribute("detailCodeItems", detailCodeItems);
+		return map;
+	}
+	
+	@RequestMapping("/saveCode")
+	public ModelAndView saveCode(ModelAndView mv, Code code, HttpServletRequest request) throws Exception{
+		codeService.saveCode(code);
+		mv.setViewName("redirect:list");
+		return mv;
+	}
 }

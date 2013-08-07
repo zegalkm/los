@@ -21,33 +21,33 @@ public class CodeServiceImpl implements CodeService{
 		return codeDao.getCodeList(param);
 	}
 
-//	@Override
-//	public int getCodeListCount(Map<String, Object> param) {
-//		return codeDao.getCodeListCount(param);
-//	}
-//
-//	@Override
-//	public void saveCode(Code code) {
-//		codeDao.saveCode(code);
-//	}
-//
-//	@Override
-//	public Code getCode(Map<String, Object> param) {
-//		return codeDao.getCode(param);
-//	}
-//
-//	@Override
-//	public void deleteCode(Map<String, Object> param) {
-//		codeDao.deleteCode(param);
-//	}
-//
-//	@Override
-//	public List<String> getMasterCodeList() {
-//		return codeDao.getMasterCodeList();
-//	}
-//
-//	@Override
-//	public List<Code> getDetailCodeList(String masterCode) {
-//		return codeDao.getDetailCodeList(masterCode);
-//	}
+	@Override
+	public int getCodeListCount(Map<String, Object> param) {
+		return codeDao.getCodeListCount(param);
+	}
+
+	@Override
+	public void saveCode(Code code) {
+		codeDao.saveCode(code);
+	}
+
+	@Override
+	public Code getCode(Map<String, Object> param) {
+		return codeDao.getCode(param);
+	}
+
+	@Override
+	public void deleteCode(Map<String, Object> param) {
+		codeDao.deleteCode(param);
+	}
+
+	@Override
+	public List<String> getMasterCodeList() {
+		return codeDao.getMasterCodeList();
+	}
+
+	@Override
+	public List<Code> getDetailCodeList(String masterCode) {
+		return codeDao.getDetailCodeList(masterCode);
+	}
 }

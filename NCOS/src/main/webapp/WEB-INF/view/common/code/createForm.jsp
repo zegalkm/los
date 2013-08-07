@@ -14,9 +14,6 @@
 			$('#codeForm').submit();
 		}
 	</script>
-	<style type="text/css">
-	.op1{background-color: red;}
-	</style>
 </head>
 <body>
 	<form name="codeForm" id="codeForm" action='<c:url value="/common/code/saveCode"/>' method="post">

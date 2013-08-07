@@ -21,6 +21,7 @@
 				<value>com.ncos.user.entity.User</value>
 				<value>com.ncos.map.entity.MapInfo</value>
 				<value>com.ncos.map.entity.MapField</value>
+				<value>com.ncos.common.entity.Code</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
