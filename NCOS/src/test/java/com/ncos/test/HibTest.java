@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ncos.common.dao.CodeDao;
 import com.ncos.common.entity.Code;
+import com.ncos.common.entity.CodePK;
 import com.ncos.hero.dao.HeroMngDao;
 import com.ncos.hero.entity.Hero;
 import com.ncos.map.dao.MapMngDao;
@@ -91,8 +92,8 @@ public class HibTest {
 		MapInfo mapInfo = mapMngDao.getMapInfo(3);
 		System.out.println("file path : "+mapInfo.getFilePath());
 	}
-	@Test
-	@Transactional
+//	@Test
+//	@Transactional
 	public void getCodeList(){
 		Map<String,Object> param = new HashMap<String, Object>();
 		param.put("p_keyword","");
@@ -109,5 +110,16 @@ public class HibTest {
 		}
 	}
 	
+	@Test
+	public void saveCode(){
+		Code code = new Code();
+		CodePK cp = new CodePK();
+		cp.setMasterCode("test");
+		cp.setDetailCode("test-1");
+		code.setCodeName("테스틑ㅌㅌ");
+		code.setSortNum(2);
+		code.setCodeId(cp);
+		codeDao.saveCode(code);
+	}
 	
 }

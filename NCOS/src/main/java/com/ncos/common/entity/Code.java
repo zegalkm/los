@@ -49,19 +49,25 @@ public class Code implements Serializable{
 		this.codeDesc = codeDesc;
 	}
 
-//	public CodePK getCodeId() {
-//		return codeId;
-//	}
-//
-//	public void setCodeId(CodePK codeId) {
-//		this.codeId = codeId;
-//	}
-	
 	public String getMasterCode(){
 		return codeId.getMasterCode();
 	}
 	public String getDetailCode(){
 		return codeId.getDetailCode();
+	}
+//	public void setMasterCode(String masterCode){
+//		codeId.setMasterCode(masterCode);
+//	}
+//	public void setDetailCode(String detailCode){
+//		codeId.setMasterCode(detailCode);
+//	}
+
+	public CodePK getCodeId() {
+		return codeId;
+	}
+
+	public void setCodeId(CodePK codeId) {
+		this.codeId = codeId;
 	}
 	
 	
