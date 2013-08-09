@@ -16,8 +16,24 @@
 	</script>
 </head>
 <body>
+	<table>
+		<tr>
+			<td>마스터코드</td>
+			<td>상세코드</td>
+			<td>코드명</td>
+		</tr>
+		<c:forEach items="${items}" var="item">
+			<tr>
+				<td>${item.masterCode}</td>
+				<td>${item.detailCode}</td>
+				<td>${item.codeName}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<ui:pagination  paginationInfo="${paginationInfo}" jsFunction="linkPage" />
 	<form name="codeForm" id="codeForm" action='<c:url value="/common/code/createForm"/>' method="post">
 	<input type="button" value="신규" onclick="create();"/>
 	</form>
+	
 </body>
 </html>

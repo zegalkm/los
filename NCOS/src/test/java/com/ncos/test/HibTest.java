@@ -112,6 +112,7 @@ public class HibTest {
 	
 	@Test
 	public void saveCode(){
+		//success
 		Code code = new Code();
 		CodePK cp = new CodePK();
 		cp.setMasterCode("test");

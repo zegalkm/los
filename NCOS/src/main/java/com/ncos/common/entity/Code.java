@@ -55,12 +55,6 @@ public class Code implements Serializable{
 	public String getDetailCode(){
 		return codeId.getDetailCode();
 	}
-//	public void setMasterCode(String masterCode){
-//		codeId.setMasterCode(masterCode);
-//	}
-//	public void setDetailCode(String detailCode){
-//		codeId.setMasterCode(detailCode);
-//	}
 
 	public CodePK getCodeId() {
 		return codeId;

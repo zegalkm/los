@@ -13,6 +13,14 @@
 		function save(){
 			$('#codeForm').submit();
 		}
+		function getDetailCode(obj){
+			if(obj.value!==''){
+				$.getJSON('/common/code/ajax/detailCodeList',{masterCode:obj.value})
+							.done(function(data){
+								alert(data.detailCodeItems[0].codeName);
+							});
+			}
+		} 
 	</script>
 </head>
 <body>
@@ -21,7 +29,8 @@
 			<tr>
 				<td>마스터코드</td>
 				<td>
-					<select id="selectMasterCode">
+					<select id="selectMasterCode" onchange="getDetailCode(this);">
+						<option value="">---마스터선택---</option>
 						<c:forEach items="${masterCodeList}" var="masterCode">
 							<option value="${masterCode}">${masterCode}</option>
 						</c:forEach>

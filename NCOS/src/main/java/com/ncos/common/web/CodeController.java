@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ncos.common.entity.Code;
+import com.ncos.common.entity.CodePK;
 import com.ncos.common.service.CodeService;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -71,6 +72,10 @@ public class CodeController {
 	
 	@RequestMapping("/saveCode")
 	public ModelAndView saveCode(ModelAndView mv, Code code, HttpServletRequest request) throws Exception{
+		CodePK codePK = new CodePK();
+		codePK.setMasterCode(request.getParameter("masterCode"));
+		codePK.setDetailCode(request.getParameter("detailCode"));
+		code.setCodeId(codePK);
 		codeService.saveCode(code);
 		mv.setViewName("redirect:list");
 		return mv;
