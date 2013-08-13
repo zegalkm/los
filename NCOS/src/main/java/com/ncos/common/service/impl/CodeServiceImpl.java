@@ -50,4 +50,9 @@ public class CodeServiceImpl implements CodeService{
 	public List<Code> getDetailCodeList(String masterCode) {
 		return codeDao.getDetailCodeList(masterCode);
 	}
+
+	@Override
+	public void updateCode(Code code) {
+		codeDao.updateCode(code);
+	}
 }

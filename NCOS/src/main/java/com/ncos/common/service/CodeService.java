@@ -10,6 +10,7 @@ public interface CodeService {
 	public List<Code> getCodeList(Map<String,Object> param);
 	public int getCodeListCount(Map<String,Object> param);
 	public void saveCode(Code code);
+	public void updateCode(Code code);
 	public Code getCode(Map<String,Object> param);
 	public void deleteCode(Map<String,Object> param);
 	public List<String> getMasterCodeList();

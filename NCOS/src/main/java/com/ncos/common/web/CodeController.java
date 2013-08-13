@@ -80,4 +80,36 @@ public class CodeController {
 		mv.setViewName("redirect:list");
 		return mv;
 	}
+	
+	@RequestMapping("/editForm")
+	public ModelAndView editForm(ModelAndView mv, HttpServletRequest request) throws Exception{
+		Map<String,Object> param = new HashMap<String, Object>();
+		param.put("p_masterCode", request.getParameter("masterCode"));
+		param.put("p_detailCode", request.getParameter("detailCode"));
+		Code code = codeService.getCode(param);
+		mv.addObject("code", code);
+		mv.setViewName("common/code/editForm");
+		return mv;
+	}
+	
+	@RequestMapping("/updateCode")
+	public ModelAndView updateCode(ModelAndView mv,Code code , HttpServletRequest request) throws Exception{
+		CodePK codePK = new CodePK();
+		codePK.setMasterCode(request.getParameter("masterCode"));
+		codePK.setDetailCode(request.getParameter("detailCode"));
+		code.setCodeId(codePK);
+		codeService.updateCode(code);
+		mv.setViewName("redirect:list");
+		return mv;
+	}
+	
+	@RequestMapping("/deleteCode")
+	public ModelAndView deleteCode(ModelAndView mv, HttpServletRequest request) throws Exception{
+		Map<String,Object> param = new HashMap<String, Object>();
+		param.put("p_masterCode", request.getParameter("masterCode"));
+		param.put("p_detailCode", request.getParameter("detailCode"));
+		codeService.deleteCode(param);
+		mv.setViewName("redirect:list");
+		return mv;
+	}
 }

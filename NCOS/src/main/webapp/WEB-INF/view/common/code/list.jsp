@@ -26,7 +26,7 @@
 			<tr>
 				<td>${item.masterCode}</td>
 				<td>${item.detailCode}</td>
-				<td>${item.codeName}</td>
+				<td><a href="<c:url value='/common/code/editForm?masterCode=${item.masterCode}&detailCode=${item.detailCode}'/>">${item.codeName}</a></td>
 			</tr>
 		</c:forEach>
 	</table>

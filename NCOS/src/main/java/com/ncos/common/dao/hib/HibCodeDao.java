@@ -111,4 +111,10 @@ public class HibCodeDao implements CodeDao{
 				                             .list(code);
 		return list;
 	}
+
+	@Override
+	public void updateCode(Code code) {
+		getSession().update(code);
+		getSession().flush();
+	}
 }
