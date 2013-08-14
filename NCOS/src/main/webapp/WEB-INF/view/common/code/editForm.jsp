@@ -10,14 +10,32 @@
 		$().ready(function(){
 		});
 	
+		//저장
 		function save(){
 			$("#masterCode").attr("disabled",false);
+			$("#detailCode").attr("disabled",false);
+			$('#codeForm').submit();
+		}
+		//삭제
+		function remove(){
+			$("#masterCode").attr("disabled",false);
+			$("#detailCode").attr("disabled",false);
+			$("#codeForm").attr("action","<c:url value='/common/code/deleteCode'/>");
+			$('#codeForm').submit();
+		}
+		//취소
+		function cancel(){
+			$("#currentPageNo").val(pageNo);
+			$("#masterCode").attr("disabled",false);
+			$("#detailCode").attr("disabled",false);
+			$("#codeForm").attr("action","<c:url value='/common/code/list'/>");
 			$('#codeForm').submit();
 		}
 	</script>
 </head>
 <body>
 	<form name="codeForm" id="codeForm" action='<c:url value="/common/code/updateCode"/>' method="post">
+		<input type="hidden" name="currentPageNo" id="currentPageNo" />
 		<table>
 			<tr>
 				<td>마스터코드</td>
@@ -28,7 +46,7 @@
 			<tr>
 				<td>상세코드</td>
 				<td>
-					<input type="text" name="detailCode" id="detailCode" value="${code.detailCode}"/>
+					<input type="text" name="detailCode" id="detailCode" value="${code.detailCode}" disabled="disabled"/>
 				</td>
 			</tr>
 			<tr>
@@ -51,6 +69,8 @@
 			</tr>
 		</table>
 		<input type="button" value="저장" onclick="javascript:save();"/>
+		<input type="button" value="삭제" onclick="javascript:remove();"/>
+		<input type="button" value="취소" onclick="javascript:cancel();"/>
 	</form>	
 </body>
 </html>

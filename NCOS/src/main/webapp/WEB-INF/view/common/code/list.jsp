@@ -10,12 +10,34 @@
 		$().ready(function(){
 		});
 	
+		//신규
 		function create(){
+			$("#codeForm").attr("action","<c:url value='/common/code/createForm'/>");
+			$("#codeForm").submit();
+		}
+		//수정
+		function edit(masterCode,detailCode){
+			$("#masterCode").val(masterCode);
+			$("#detailCode").val(detailCode);
+			$("#codeForm").attr("action","<c:url value='/common/code/editForm'/>");
+			$("#codeForm").submit();
+		}
+		//페이지 이동
+		function linkPage(pageNo){
+			$("#currentPageNo").val(pageNo);
+			$("#codeForm").attr("action","<c:url value='/common/code/list'/>");
 			$("#codeForm").submit();
 		}
 	</script>
 </head>
 <body>
+
+<form name="codeForm" id="codeForm" action="<c:url value='/common/code/editForm'/>" method="post">
+	<input type="hidden" name="masterCode" id="masterCode" />
+	<input type="hidden" name="detailCode" id="detailCode" />
+	<input type="hidden" name="currentPageNo" id="currentPageNo" value="${param.currentPageNo}"/>
+</form>
+
 	<table>
 		<tr>
 			<td>마스터코드</td>
@@ -26,14 +48,12 @@
 			<tr>
 				<td>${item.masterCode}</td>
 				<td>${item.detailCode}</td>
-				<td><a href="<c:url value='/common/code/editForm?masterCode=${item.masterCode}&detailCode=${item.detailCode}'/>">${item.codeName}</a></td>
+				<td><a href="javascript:;" onclick="edit('${item.masterCode}','${item.detailCode}');">${item.codeName}</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 	<ui:pagination  paginationInfo="${paginationInfo}" jsFunction="linkPage" />
-	<form name="codeForm" id="codeForm" action='<c:url value="/common/code/createForm"/>' method="post">
 	<input type="button" value="신규" onclick="create();"/>
-	</form>
 	
 </body>
 </html>

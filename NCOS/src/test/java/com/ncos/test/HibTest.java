@@ -110,8 +110,21 @@ public class HibTest {
 		}
 	}
 	
-	@Test
+//	@Test
 	public void saveCode(){
+		//success
+		Code code = new Code();
+		CodePK cp = new CodePK();
+		cp.setMasterCode("test");
+		cp.setDetailCode("test-1");
+		code.setCodeName("테스틑ㅌㅌ");
+		code.setSortNum(2);
+		code.setCodeId(cp);
+		codeDao.saveCode(code);
+	}
+	
+	@Test
+	public void updateCode(){
 		//success
 		Code code = new Code();
 		CodePK cp = new CodePK();
