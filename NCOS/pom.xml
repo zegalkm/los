@@ -26,6 +26,10 @@
 			<enabled>false</enabled>
 		</snapshots>
 	</repository>
+    <repository>
+        <id>kwon37xi-github-m2-repos</id>
+        <url>https://raw.github.com/kwon37xi/m2repos/master/releases</url>
+    </repository>
 </repositories>
 <!-- 
 =========================================== 
@@ -282,6 +286,20 @@
 <!-- 		<groupId>org.apache.tiles</groupId> -->
 <!-- 		<artifactId>tiles-core</artifactId> -->
 <!-- 		<version>${tiles.version}</version> -->
+<!--         <exclusions> -->
+<!--             <exclusion> -->
+<!--                 <groupId>org.slf4j</groupId> -->
+<!--                 <artifactId>slf4j-nop</artifactId> -->
+<!--             </exclusion> -->
+<!--             <exclusion> -->
+<!--                 <groupId>org.slf4j</groupId> -->
+<!--                 <artifactId>slf4j-api</artifactId> -->
+<!--              </exclusion> -->
+<!--              <exclusion> -->
+<!--                  <groupId>org.slf4j</groupId> -->
+<!--                  <artifactId>jcl-over-slf4j</artifactId> -->
+<!--              </exclusion> -->
+<!--         </exclusions>				 -->
 <!-- 	</dependency> -->
 <!-- 	<dependency> -->
 <!-- 		<groupId>org.apache.tiles</groupId> -->
@@ -291,7 +309,7 @@
 <!-- 	<dependency> -->
 <!-- 		<groupId>org.apache.tiles</groupId> -->
 <!-- 		<artifactId>tiles-jsp</artifactId> -->
-<!-- 		<version>${tiles.version}</version> -->
+<!-- 		<version>${tiles.version}</version>	 -->
 <!-- 	</dependency> -->
 	<dependency>
 		<groupId>org.slf4j</groupId>
@@ -308,45 +326,52 @@
 	  <artifactId>httpmime</artifactId>
 	  <version>4.1.3</version>
 	</dependency>	
-<dependency>
-  <groupId>org.apache.httpcomponents</groupId>
-  <artifactId>httpclient</artifactId>
-  <version>4.1</version>
-</dependency>	
-<dependency>
-	<groupId>org.apache.tomcat.embed</groupId>
-	<artifactId>tomcat-embed-core</artifactId>
-	<version>7.0.29</version>
-	<scope>compile</scope>
-</dependency>
+	<dependency>
+	  <groupId>org.apache.httpcomponents</groupId>
+	  <artifactId>httpclient</artifactId>
+	  <version>4.1</version>
+	</dependency>	
+	<dependency>
+		<groupId>org.apache.tomcat.embed</groupId>
+		<artifactId>tomcat-embed-core</artifactId>
+		<version>7.0.29</version>
+		<scope>compile</scope>
+	</dependency>
 <!-- <dependency> -->
 <!-- 	<groupId>org.apache.tomcat</groupId> -->
 <!-- 	<artifactId>tomcat-catalina</artifactId> -->
 <!-- 	<version>7.0.29</version> -->
 <!-- 	<scope>compile</scope> -->
 <!-- </dependency> -->
-<dependency>
-	<groupId>net.arnx</groupId>
-	<artifactId>jsonic</artifactId>
-	<version>1.3.0</version>
-</dependency>
+	<dependency>
+		<groupId>net.arnx</groupId>
+		<artifactId>jsonic</artifactId>
+		<version>1.3.0</version>
+	</dependency>
 	<dependency>
 		<groupId>com.google.code.gson</groupId>
 		<artifactId>gson</artifactId>
 		<version>2.2</version>
 	</dependency>
 	
-<!-- image ThumbNailer -->
+	<!-- image ThumbNailer -->
 	<dependency>
 	    <groupId>com.mortennobel</groupId>
 	    <artifactId>java-image-scaling</artifactId>
 	    <version>0.8.5</version>
 	</dependency>
-<!-- Egov MVC -->
+	<!-- Egov MVC -->
 	<dependency>
 		<groupId>egovframework.rte</groupId>
 		<artifactId>egovframework.rte.ptl.mvc</artifactId>
 		<version>2.5.0</version>
+	</dependency>	
+	<!-- jsp template -->	
+	<dependency>
+	    <groupId>kr.pe.kwonnam.jsp</groupId>
+	    <artifactId>jsp-inheritance</artifactId>
+	    <version>0.2</version>
+	    <scope>compile</scope>
 	</dependency>	
   </dependencies>
 <!-- 

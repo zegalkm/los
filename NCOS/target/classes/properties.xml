@@ -3,10 +3,10 @@
 <properties>
 <comment>jdbcInfo</comment>
 <entry key="driver">org.postgresql.Driver</entry>
-<entry key="url">jdbc:postgresql://localhost:5432/los</entry>
+<entry key="url">jdbc:postgresql://localhost:5433/los</entry>
 <entry key="username">jessica</entry>
 <entry key="password">1234</entry>
-<entry key="commonFilePath">E:/los_file/</entry>
+<entry key="commonFilePath">/Users/Taengoo/git/attach_file</entry>
 <entry key="heroFilePath">hero</entry>
 <entry key="mapFilePath">map</entry>
 <!-- <entry key="driver">com.mysql.jdbc.Driver</entry> -->
